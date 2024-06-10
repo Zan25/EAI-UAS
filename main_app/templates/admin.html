@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      .hidden {
+        display: none;
+      }
+      .form-container {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Admin Dashboard</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <button
+              class="btn btn-link nav-link"
+              onclick="toggleSection('flightSection')"
+            >
+              Flight
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="btn btn-link nav-link"
+              onclick="toggleSection('trainSection')"
+            >
+              Train
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="btn btn-link nav-link"
+              onclick="toggleSection('hotelSection')"
+            >
+              Hotel
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="btn btn-link nav-link"
+              onclick="toggleSection('attractionSection')"
+            >
+              Attraction
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="btn btn-link nav-link"
+              onclick="toggleSection('infowisataSection')"
+            >
+              Info Wisata
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <!-- Flight Section -->
+      <div id="flightSection" class="row mt-4 hidden">
+        <div class="col">
+          <h2>Manage Flights</h2>
+          <div>
+            <button
+              class="btn btn-primary"
+              onclick="toggleForm('flight', 'create')"
+            >
+              Submit New Data
+            </button>
+            <button
+              class="btn btn-secondary"
+              onclick="toggleForm('flight', 'update')"
+            >
+              Update Data
+            </button>
+            <button
+              class="btn btn-danger"
+              onclick="toggleForm('flight', 'delete')"
+            >
+              Delete Data
+            </button>
+          </div>
+          <div id="flightFormContainer" class="form-container hidden">
+            <form id="flightForm">
+              <input type="hidden" id="flightAction" />
+              <div id="flightIdContainer" class="hidden">
+                <label for="flightId">ID:</label>
+                <input type="text" id="flightId" name="flightId" /><br /><br />
+              </div>
+              <div id="flightFormFields">
+                <label for="flightDepartureCity">Departure City:</label>
+                <input
+                  type="text"
+                  id="flightDepartureCity"
+                  name="departure_city"
+                /><br /><br />
+                <label for="flightDestinationCity">Destination City:</label>
+                <input
+                  type="text"
+                  id="flightDestinationCity"
+                  name="destination_city"
+                /><br /><br />
+                <label for="flightPrice">Price:</label>
+                <input
+                  type="number"
+                  id="flightPrice"
+                  name="price"
+                /><br /><br />
+              </div>
+              <button type="button" onclick="submitForm('flight')">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Train Section -->
+      <div id="trainSection" class="row mt-4 hidden">
+        <div class="col">
+          <h2>Manage Trains</h2>
+          <div>
+            <button
+              class="btn btn-primary"
+              onclick="toggleForm('train', 'create')"
+            >
+              Submit New Data
+            </button>
+            <button
+              class="btn btn-secondary"
+              onclick="toggleForm('train', 'update')"
+            >
+              Update Data
+            </button>
+            <button
+              class="btn btn-danger"
+              onclick="toggleForm('train', 'delete')"
+            >
+              Delete Data
+            </button>
+          </div>
+          <div id="trainFormContainer" class="form-container hidden">
+            <form id="trainForm">
+              <input type="hidden" id="trainAction" />
+              <div id="trainIdContainer" class="hidden">
+                <label for="trainId">ID:</label>
+                <input type="text" id="trainId" name="trainId" /><br /><br />
+              </div>
+              <div id="trainFormFields">
+                <label for="trainDepartureStation">Departure Station:</label>
+                <input
+                  type="text"
+                  id="trainDepartureStation"
+                  name="departure_station"
+                /><br /><br />
+                <label for="trainDestinationStation"
+                  >Destination Station:</label
+                >
+                <input
+                  type="text"
+                  id="trainDestinationStation"
+                  name="destination_station"
+                /><br /><br />
+                <label for="trainPrice">Price:</label>
+                <input type="number" id="trainPrice" name="price" /><br /><br />
+              </div>
+              <button type="button" onclick="submitForm('train')">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel Section -->
+      <div id="hotelSection" class="row mt-4 hidden">
+        <div class="col">
+          <h2>Manage Hotels</h2>
+          <div>
+            <button
+              class="btn btn-primary"
+              onclick="toggleForm('hotel', 'create')"
+            >
+              Submit New Data
+            </button>
+            <button
+              class="btn btn-secondary"
+              onclick="toggleForm('hotel', 'update')"
+            >
+              Update Data
+            </button>
+            <button
+              class="btn btn-danger"
+              onclick="toggleForm('hotel', 'delete')"
+            >
+              Delete Data
+            </button>
+          </div>
+          <div id="hotelFormContainer" class="form-container hidden">
+            <form id="hotelForm">
+              <input type="hidden" id="hotelAction" />
+              <div id="hotelIdContainer" class="hidden">
+                <label for="hotelId">ID:</label>
+                <input type="text" id="hotelId" name="hotelId" /><br /><br />
+              </div>
+              <div id="hotelFormFields">
+                <label for="hotelName">Hotel Name:</label>
+                <input
+                  type="text"
+                  id="hotelName"
+                  name="hotel_name"
+                /><br /><br />
+                <label for="hotelLocation">Location:</label>
+                <input
+                  type="text"
+                  id="hotelLocation"
+                  name="location"
+                /><br /><br />
+                <label for="hotelPricePerNight">Price per Night:</label>
+                <input
+                  type="number"
+                  id="hotelPricePerNight"
+                  name="price_per_night"
+                /><br /><br />
+              </div>
+              <button type="button" onclick="submitForm('hotel')">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Attraction Section -->
+      <div id="attractionSection" class="row mt-4 hidden">
+        <div class="col">
+          <h2>Manage Attractions</h2>
+          <div>
+            <button
+              class="btn btn-primary"
+              onclick="toggleForm('attraction', 'create')"
+            >
+              Submit New Data
+            </button>
+            <button
+              class="btn btn-secondary"
+              onclick="toggleForm('attraction', 'update')"
+            >
+              Update Data
+            </button>
+            <button
+              class="btn btn-danger"
+              onclick="toggleForm('attraction', 'delete')"
+            >
+              Delete Data
+            </button>
+          </div>
+          <div id="attractionFormContainer" class="form-container hidden">
+            <form id="attractionForm">
+              <input type="hidden" id="attractionAction" />
+              <div id="attractionIdContainer" class="hidden">
+                <label for="attractionId">ID:</label>
+                <input
+                  type="text"
+                  id="attractionId"
+                  name="attractionId"
+                /><br /><br />
+              </div>
+              <div id="attractionFormFields">
+                <label for="attractionName">Attraction Name:</label>
+                <input
+                  type="text"
+                  id="attractionName"
+                  name="attraction_name"
+                /><br /><br />
+                <label for="attractionLocation">Location:</label>
+                <input
+                  type="text"
+                  id="attractionLocation"
+                  name="location"
+                /><br /><br />
+                <label for="attractionTicketPrice">Ticket Price:</label>
+                <input
+                  type="number"
+                  id="attractionTicketPrice"
+                  name="ticket_price"
+                /><br /><br />
+              </div>
+              <button type="button" onclick="submitForm('attraction')">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Wisata Section -->
+      <div id="infowisataSection" class="row mt-4 hidden">
+        <div class="col">
+          <h2>Manage Info Wisata</h2>
+          <div>
+            <button
+              class="btn btn-primary"
+              onclick="toggleForm('infowisata', 'create')"
+            >
+              Submit New Data
+            </button>
+            <button
+              class="btn btn-secondary"
+              onclick="toggleForm('infowisata', 'update')"
+            >
+              Update Data
+            </button>
+            <button
+              class="btn btn-danger"
+              onclick="toggleForm('infowisata', 'delete')"
+            >
+              Delete Data
+            </button>
+          </div>
+          <div id="infowisataFormContainer" class="form-container hidden">
+            <form id="infowisataForm">
+              <input type="hidden" id="infowisataAction" />
+              <div id="infowisataIdContainer" class="hidden">
+                <label for="infowisataId">ID:</label>
+                <input
+                  type="text"
+                  id="infowisataId"
+                  name="infowisataId"
+                /><br /><br />
+              </div>
+              <div id="infowisataFormFields">
+                <label for="infowisataName">Name:</label>
+                <input
+                  type="text"
+                  id="infowisataName"
+                  name="nama"
+                /><br /><br />
+                <label for="infowisataDesc">Description:</label>
+                <input
+                  type="text"
+                  id="infowisataDesc"
+                  name="desc"
+                /><br /><br />
+                <label for="infowisataPrice">Price:</label>
+                <input
+                  type="number"
+                  id="infowisataPrice"
+                  name="harga"
+                /><br /><br />
+                <label for="infowisataImageUrl">Image URL:</label>
+                <input
+                  type="text"
+                  id="infowisataImageUrl"
+                  name="gambar_url"
+                /><br /><br />
+              </div>
+              <button type="button" onclick="submitForm('infowisata')">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript for Form Handling -->
+    <script>
+      function toggleSection(sectionId) {
+        document.querySelectorAll(".row.mt-4").forEach((section) => {
+          section.classList.add("hidden");
+        });
+        document.getElementById(sectionId).classList.remove("hidden");
+      }
+
+      function toggleForm(endpoint, action) {
+        const formContainer = document.getElementById(
+          endpoint + "FormContainer"
+        );
+        const formFields = document.getElementById(endpoint + "FormFields");
+        const form = document.getElementById(endpoint + "Form");
+        const idContainer = document.getElementById(endpoint + "IdContainer");
+
+        formContainer.classList.remove("hidden");
+        document.getElementById(endpoint + "Action").value = action;
+
+        if (action === "create") {
+          formFields.classList.remove("hidden");
+          idContainer.classList.add("hidden");
+          form.reset();
+        } else {
+          formFields.classList.remove("hidden");
+          idContainer.classList.remove("hidden");
+          form.reset();
+        }
+      }
+
+      function submitForm(endpoint) {
+        const action = document.getElementById(endpoint + "Action").value;
+        if (action === "create") {
+          submitData(endpoint);
+        } else if (action === "update") {
+          updateData(endpoint);
+        } else if (action === "delete") {
+          deleteData(endpoint);
+        }
+      }
+
+      function submitData(endpoint) {
+        const form = document.getElementById(endpoint + "Form");
+        const url = `/${endpoint}`;
+        const data = {};
+
+        form.querySelectorAll("input").forEach((input) => {
+          if (input.name && !input.name.endsWith("Id")) {
+            data[input.name] = input.value;
+          }
+        });
+
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert(data.message || "Operation successful");
+            form.reset();
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again.");
+          });
+      }
+
+      function updateData(endpoint) {
+        const form = document.getElementById(endpoint + "Form");
+        const id = form[endpoint + "Id"].value;
+        const url = `/${endpoint}/${id}`;
+        const data = {};
+
+        form.querySelectorAll("input").forEach((input) => {
+          if (input.name && !input.name.endsWith("Id")) {
+            data[input.name] = input.value;
+          }
+        });
+
+        fetch(url, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert(data.message || "Operation successful");
+            form.reset();
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again.");
+          });
+      }
+
+      function deleteData(endpoint) {
+        const form = document.getElementById(endpoint + "Form");
+        const id = form[endpoint + "Id"].value;
+        if (!id) {
+          alert("Please enter an ID to delete");
+          return;
+        }
+        const url = `/${endpoint}/${id}`;
+
+        fetch(url, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            alert(data.message || "Deleted successfully");
+            form.reset();
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again.");
+          });
+      }
+    </script>
+  </body>
+</html>
